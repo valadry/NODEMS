@@ -16,6 +16,8 @@ console.log(hobbies.map(hobby => {
     return 'Hobbies are '+ hobby;
 }));
 
+
+
 //Similar to the code above but since using pointer function,
 //No need to use return and {}
 //edit's the array
@@ -31,9 +33,13 @@ const person = {
     }
 };
 
+
+
 //Example of adding to array. 
 hobbies.push('Programming');
 console.log(hobbies);
+
+
 
 //Array can be immutable and we copy the contents of an array
 //and then add the new element in the array.
@@ -41,10 +47,14 @@ console.log(hobbies);
 const copiedArray = hobbies.slice();
 console.log(copiedArray);
 
+
+
 //Spred operator(...___). It takes all the properties from the existing array. I.E. elements, etc.
 //also works on objects
 const copiedArray1 = [...hobbies];
 console.log(copiedArray);
+
+
 
 //Rest operators = (...___). could put many arguements and bundle them up and execute them 
 const toArray = (...args) => {
@@ -52,6 +62,25 @@ const toArray = (...args) => {
 };
 
 console.log(toArray(1,2,3,4));
+
+//Destructuring
+const printName = (personName) =>{
+    console.log(personName.name)
+};
+
+printName(person);
+
+//easier method of passing on object through a function is with Destructuring
+//it only looks for the property "name" and only pulls out that "name" 
+// from the object
+const printName1 = ({name, age}) =>{
+    console.log(name + " " + age)
+};
+
+printName1(person);
+
+const {name1 , age1} = person;
+console.log(name1, age1)
 
 //this is a pointer (=>) function 
 const summarizeUser = (userName, userAge, userHasHobby) => { 
