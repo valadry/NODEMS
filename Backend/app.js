@@ -4,6 +4,7 @@ import { Client } from 'pg'
 import * as http from 'http'
 import * as fs from 'fs'
 import { Pool } from 'pg'
+import { Questions, Examples } from './C1.mjs'
 
 
 
@@ -54,6 +55,22 @@ const server = http.createServer(async (req, res) =>{
             res.write('<body><form action="/message" method="POST"><input type="text" name="message"><button type="submit">Send</button></form></body>');
             res.write('</html>');
             return res.end();
+    }
+
+    if (url === '/api/questions' && method === 'GET') {
+        const questions = await Questions();
+        console.log(questions);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.write(JSON.stringify(questions));
+        return res.end();
+    }
+    console.log(url);
+    if (url === '/api/questions/examples' && method === 'GET') {
+        const examples = await Examples();
+        console.log(examples);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.write(JSON.stringify(examples));
+        return res.end();
     }
 
     if(url === '/message' && method === 'POST'){

@@ -9,10 +9,19 @@ const sql = postgres('http://localhost:3000', {
 })
 
 
-const Questions = await sql`
+export const Questions = async () => {return await sql`
   select
     * 
   from public."Questions";
 `
+}
 
-console.log(Questions)
+export const Examples = async () => {return await sql`
+  select
+    * 
+  from public."Examples";
+`
+};
+
+
+console.log(Questions);
